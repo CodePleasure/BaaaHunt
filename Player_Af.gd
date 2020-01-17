@@ -90,7 +90,7 @@ func process_model_animation(delta):
 		if Input.is_action_just_pressed("movement_crouch"):
 			animation_manager.set_animation("Standing To Crouch")
 		elif Input.is_action_just_pressed("action_draw_arrow"):
-			animation_manager.set_animation("Standing Draw Arrow")
+			animation_manager.set_animation("Standing Aim Idle 01")
 		elif is_animation_changeable == true:
 			if is_to_move() == true:
 				animation_manager.set_animation("Standing Run Forward")

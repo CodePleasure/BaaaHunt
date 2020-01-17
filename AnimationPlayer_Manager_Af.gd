@@ -2,10 +2,10 @@ extends AnimationPlayer
 
 var states = {
 	"Unarmed Idle 01": [],
-	"Standing Idle 01": ["Standing Idle 02 Looking", "Standing Idle 03 Examine", "Standing Run Forward", "Standing To Crouch", "Standing Draw Arrow"],
-	"Standing Idle 02 Looking": ["Standing Idle 01", "Standing Run Forward", "Standing To Crouch", "Standing Draw Arrow"],
-	"Standing Idle 03 Examine": ["Standing Idle 01", "Standing Run Forward", "Standing To Crouch", "Standing Draw Arrow"],
-	"Standing Run Forward": ["Standing Idle 01", "Standing To Crouch", "Standing Draw Arrow"],
+	"Standing Idle 01": ["Standing Idle 02 Looking", "Standing Idle 03 Examine", "Standing Run Forward", "Standing To Crouch", "Standing Aim Idle 01"],
+	"Standing Idle 02 Looking": ["Standing Idle 01", "Standing Run Forward", "Standing To Crouch", "Standing Aim Idle 01"],
+	"Standing Idle 03 Examine": ["Standing Idle 01", "Standing Run Forward", "Standing To Crouch", "Standing Aim Idle 01"],
+	"Standing Run Forward": ["Standing Idle 01", "Standing To Crouch", "Standing Aim Idle 01"],
 	
 	# Crouch
 	"Standing To Crouch": ["Crouch Idle 01", "Crouch Walk Forward", "Crouch To Standing"],
