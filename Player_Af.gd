@@ -69,8 +69,11 @@ func process_input(delta):
 
 func process_model_animation(delta):
 	if is_aiming == true:
-		if Input.is_action_just_released("action_draw_arrow"):
-			animation_manager.set_animation("Standing Draw Arrow Backwards", true)
+		if is_animation_changeable == true:
+			if Input.is_action_just_released("action_draw_arrow"):
+				animation_manager.set_animation("Standing Idle 01")
+			elif not Input.is_action_pressed("action_draw_arrow"):
+				animation_manager.set_animation("Standing Idle 01")
 	elif is_crouching == false:
 		if Input.is_action_just_pressed("movement_crouch"):
 			animation_manager.set_animation("Standing To Crouch")
@@ -201,8 +204,8 @@ func set_crouching(value):
 
 	if is_crouching == true:
 		MAX_SPEED = 2
-		ACCEL = 3
-		DEACCEL = 3
+		ACCEL = 4
+		DEACCEL = 4
 	else:
 		MAX_SPEED = 5
 		ACCEL = 8
@@ -215,6 +218,7 @@ func hold_changes(value):
 
 func set_aiming(value):
 	is_aiming = value
+	print(is_aiming)
 
 func is_to_move():
 	return Vector2(0, 0) != input_movement_vector

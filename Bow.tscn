@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Bow/body3.material" type="Material" id=3]
 [ext_resource path="res://assets/Bow/Handle.material" type="Material" id=4]
 
-[sub_resource type="ArrayMesh" id=2]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube.016"
 surfaces/0 = {
 "aabb": AABB( -0.461825, -1.37015, -3.9561, 0.923651, 0.512247, 4.68996 ),
@@ -21,7 +21,7 @@ surfaces/0 = {
 "vertex_count": 187
 }
 
-[sub_resource type="ArrayMesh" id=3]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Cube.015"
 surfaces/0 = {
 "aabb": AABB( -1.25552, -1.71825, -0.564658, 2.51104, 13.7129, 16.1046 ),
@@ -37,7 +37,7 @@ surfaces/0 = {
 "vertex_count": 546
 }
 
-[sub_resource type="ArrayMesh" id=4]
+[sub_resource type="ArrayMesh" id=3]
 resource_name = "Cube.014"
 surfaces/0 = {
 "aabb": AABB( -2.74887, -0.299388, -4.70148, 5.49774, 0.636209, 7.47308 ),
@@ -53,7 +53,7 @@ surfaces/0 = {
 "vertex_count": 209
 }
 
-[sub_resource type="ArrayMesh" id=5]
+[sub_resource type="ArrayMesh" id=4]
 resource_name = "Cube.013"
 surfaces/0 = {
 "aabb": AABB( -1, -1.63704, -4.15858, 2, 3.31204, 8.77669 ),
@@ -69,7 +69,7 @@ surfaces/0 = {
 "vertex_count": 683
 }
 
-[sub_resource type="ArrayMesh" id=6]
+[sub_resource type="ArrayMesh" id=5]
 resource_name = "Cube.012"
 surfaces/0 = {
 "aabb": AABB( -1.5133, -1.02475, -8.31614, 3.0266, 2.22948, 11.623 ),
@@ -85,7 +85,7 @@ surfaces/0 = {
 "vertex_count": 440
 }
 
-[sub_resource type="ArrayMesh" id=7]
+[sub_resource type="ArrayMesh" id=6]
 resource_name = "Cube.011"
 surfaces/0 = {
 "aabb": AABB( -0.927905, -0.0467209, -1.47342, 1.85581, 0.213476, 2.57501 ),
@@ -101,7 +101,7 @@ surfaces/0 = {
 "vertex_count": 174
 }
 
-[sub_resource type="ArrayMesh" id=8]
+[sub_resource type="ArrayMesh" id=7]
 resource_name = "Cube.010"
 surfaces/0 = {
 "aabb": AABB( -0.876362, -1.97708, -0.647798, 1.75272, 4.28619, 2.35226 ),
@@ -117,7 +117,7 @@ surfaces/0 = {
 "vertex_count": 714
 }
 
-[sub_resource type="ArrayMesh" id=9]
+[sub_resource type="ArrayMesh" id=8]
 resource_name = "Cube.009"
 surfaces/0 = {
 "aabb": AABB( -0.832815, -0.905666, -0.806198, 1.66563, 1.7391, 1.70504 ),
@@ -133,7 +133,7 @@ surfaces/0 = {
 "vertex_count": 487
 }
 
-[sub_resource type="ArrayMesh" id=10]
+[sub_resource type="ArrayMesh" id=9]
 resource_name = "Cube.008"
 surfaces/0 = {
 "aabb": AABB( -0.461825, -1.37015, -3.9561, 0.923651, 0.512247, 4.68996 ),
@@ -149,7 +149,7 @@ surfaces/0 = {
 "vertex_count": 187
 }
 
-[sub_resource type="ArrayMesh" id=11]
+[sub_resource type="ArrayMesh" id=10]
 resource_name = "Cube.007"
 surfaces/0 = {
 "aabb": AABB( -1.25552, -1.71825, -0.564658, 2.51104, 13.7129, 16.1046 ),
@@ -165,7 +165,7 @@ surfaces/0 = {
 "vertex_count": 546
 }
 
-[sub_resource type="ArrayMesh" id=12]
+[sub_resource type="ArrayMesh" id=11]
 resource_name = "Cube.006"
 surfaces/0 = {
 "aabb": AABB( -2.74887, -0.299388, -4.70148, 5.49774, 0.636209, 7.47308 ),
@@ -181,7 +181,7 @@ surfaces/0 = {
 "vertex_count": 209
 }
 
-[sub_resource type="ArrayMesh" id=13]
+[sub_resource type="ArrayMesh" id=12]
 resource_name = "Cube.004"
 surfaces/0 = {
 "aabb": AABB( -1, -1.63704, -4.15858, 2, 3.31204, 8.77669 ),
@@ -197,7 +197,7 @@ surfaces/0 = {
 "vertex_count": 683
 }
 
-[sub_resource type="ArrayMesh" id=14]
+[sub_resource type="ArrayMesh" id=13]
 resource_name = "Cube.002"
 surfaces/0 = {
 "aabb": AABB( -1.5133, -1.02475, -8.31614, 3.0266, 2.22948, 11.623 ),
@@ -213,7 +213,7 @@ surfaces/0 = {
 "vertex_count": 440
 }
 
-[sub_resource type="ArrayMesh" id=15]
+[sub_resource type="ArrayMesh" id=14]
 resource_name = "Cube.001"
 surfaces/0 = {
 "aabb": AABB( -0.927905, -0.0467209, -1.47342, 1.85581, 0.213476, 2.57501 ),
@@ -229,7 +229,7 @@ surfaces/0 = {
 "vertex_count": 174
 }
 
-[sub_resource type="ArrayMesh" id=16]
+[sub_resource type="ArrayMesh" id=15]
 resource_name = "Cube.005"
 surfaces/0 = {
 "aabb": AABB( -0.876362, -1.97708, -0.647798, 1.75272, 4.28619, 2.35226 ),
@@ -245,7 +245,7 @@ surfaces/0 = {
 "vertex_count": 714
 }
 
-[sub_resource type="ArrayMesh" id=17]
+[sub_resource type="ArrayMesh" id=16]
 resource_name = "Cube.003"
 surfaces/0 = {
 "aabb": AABB( -0.832815, -0.905666, -0.806198, 1.66563, 1.7391, 1.70504 ),
@@ -261,7 +261,7 @@ surfaces/0 = {
 "vertex_count": 487
 }
 
-[sub_resource type="ArrayMesh" id=18]
+[sub_resource type="ArrayMesh" id=17]
 resource_name = "Cylinder.006"
 surfaces/0 = {
 "aabb": AABB( -0.0553192, -0.334118, -0.76766, 0.110638, 0.677776, 0.157399 ),
@@ -277,90 +277,90 @@ surfaces/0 = {
 "vertex_count": 1276
 }
 
-[node name="Bow" type="Position3D"]
-transform = Transform( 1.75, 0, 0, 0, 2.5, 0, 0, 0, 1.75, 0, 0, 0 )
+[node name="Bow" type="Spatial"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 0, 0 )
 
 [node name="Cube015" type="MeshInstance" parent="."]
 transform = Transform( -0.139327, 1.50996e-007, 1.72882e-015, -2.10378e-008, -1, -2.84495e-008, -3.54672e-015, -2.8213e-007, 0.100838, 3.05217e-007, -3.4931, -0.0329786 )
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Cube014" type="MeshInstance" parent="."]
 transform = Transform( -0.0580049, 1.86782e-008, 7.6889e-016, -8.75849e-009, -0.1237, -9.78526e-009, -1.18514e-015, -3.48994e-008, 0.0346835, 8.19444e-008, -2.01443, -0.341167 )
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Cube013" type="MeshInstance" parent="."]
 transform = Transform( -0.0553778, 1.50996e-007, 9.49422e-016, -8.36182e-009, -1, -1.56237e-008, -1.4097e-015, -2.8213e-007, 0.0553778, 8.19444e-008, -2.01443, -0.490817 )
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="Cube012" type="MeshInstance" parent="."]
 transform = Transform( -0.0689402, 6.6044e-008, 9.25788e-016, -1.04097e-008, -0.43739, -1.52348e-008, -1.75494e-015, -1.23401e-007, 0.0539993, -3.12192e-008, -1.26499, -0.593071 )
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Cube011" type="MeshInstance" parent="."]
 transform = Transform( -0.0552038, 1.06891e-007, 9.46439e-016, -8.33554e-009, -0.707909, -1.55746e-008, -1.40527e-015, -1.99722e-007, 0.0552038, -3.21956e-008, -1.25852, -0.514968 )
-mesh = SubResource( 6 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Cube010" type="MeshInstance" parent="."]
 transform = Transform( -0.0861898, 7.57809e-008, 2.34376e-015, -1.30143e-008, -0.501874, -2.43167e-008, -1.32796e-015, -1.41594e-007, 0.0861898, -1.72343e-007, -0.330366, -0.691004 )
-mesh = SubResource( 7 )
+mesh = SubResource( 6 )
 material/0 = null
 
 [node name="Cube009" type="MeshInstance" parent="."]
 transform = Transform( -0.109867, 3.44988e-008, 6.21294e-015, -1.65895e-008, -0.228475, -6.44597e-008, -1.69277e-015, -6.44597e-008, 0.228475, -9.86739e-008, -0.818254, -0.902419 )
-mesh = SubResource( 8 )
+mesh = SubResource( 7 )
 material/0 = null
 
 [node name="Cube008" type="MeshInstance" parent="."]
 transform = Transform( -0.113887, 4.29846e-008, 3.27401e-015, -1.71965e-008, -0.284674, -4.16666e-008, -2.32691e-015, -8.03152e-008, 0.147686, -1.34674e-007, -0.579834, -0.787946 )
-mesh = SubResource( 9 )
+mesh = SubResource( 8 )
 material/0 = null
 
 [node name="Cube007" type="MeshInstance" parent="."]
 transform = Transform( 0.139327, 0, 0, 0, 1, 1.64286e-008, 0, -1.62921e-007, 0.100838, 0, 3.5013, -0.0329781 )
-mesh = SubResource( 10 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Cube006" type="MeshInstance" parent="."]
 transform = Transform( 0.0580049, 0, 0, 0, 0.1237, 5.65066e-009, 0, -2.01533e-008, 0.0346835, 0, 2.02263, -0.341167 )
-mesh = SubResource( 11 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="Cube005" type="MeshInstance" parent="."]
 transform = Transform( 0.0553778, 0, 0, 0, 1, 9.02219e-009, 0, -1.62921e-007, 0.0553778, 0, 2.02263, -0.490816 )
-mesh = SubResource( 12 )
+mesh = SubResource( 11 )
 material/0 = null
 
 [node name="Cube004" type="MeshInstance" parent="."]
 transform = Transform( 0.0689402, 0, 0, 0, 0.43739, 8.7976e-009, 0, -7.12599e-008, 0.0539993, 0, 1.27318, -0.593071 )
-mesh = SubResource( 13 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Cube003" type="MeshInstance" parent="."]
 transform = Transform( 0.0552038, 0, 0, 0, 0.707909, 8.99384e-009, 0, -1.15333e-007, 0.0552038, 0, 1.26671, -0.514968 )
-mesh = SubResource( 14 )
+mesh = SubResource( 13 )
 material/0 = null
 
 [node name="Cube002" type="MeshInstance" parent="."]
 transform = Transform( 0.0861898, 0, 0, 0, 0.501874, 1.40421e-008, 0, -8.17657e-008, 0.0861898, 0, 0.338558, -0.691004 )
-mesh = SubResource( 15 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="Cube" type="MeshInstance" parent="."]
 transform = Transform( 0.109867, 0, 0, 0, 0.228475, 3.72234e-008, 0, -3.72234e-008, 0.228475, 0, 0.826447, -0.90242 )
-mesh = SubResource( 16 )
+mesh = SubResource( 15 )
 material/0 = null
 
 [node name="Cube001" type="MeshInstance" parent="."]
 transform = Transform( 0.113887, 0, 0, 0, 0.284674, 2.40611e-008, 0, -4.63793e-008, 0.147686, 0, 0.588026, -0.787946 )
-mesh = SubResource( 17 )
+mesh = SubResource( 16 )
 material/0 = null
 
 [node name="Cylinder006" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 1.62921e-007, 0, -1.62921e-007, 1, 0, 0, 0 )
-mesh = SubResource( 18 )
+mesh = SubResource( 17 )
 material/0 = null

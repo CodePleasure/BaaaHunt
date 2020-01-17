@@ -16,17 +16,16 @@ var states = {
 	"Crouch To Standing": ["Standing Idle 01", "Standing Run Forward"],
 	
 	# Arrow
-	"Standing Draw Arrow": ["Standing Aim Idle 01", "Standing Draw Arrow Backwards"],
-	"Standing Aim Idle 01": ["Standing Aim Idle 01", "Standing Aim Idle 02 Looking", "Standing Draw Arrow Backwards"],
-	"Standing Aim Idle 02 Looking": ["Standing Aim Idle 01", "Standing Draw Arrow Backwards"],
-	"Standing Draw Arrow Backwards": ["Standing Idle 01"],
+	"Standing Draw Arrow": ["Standing Aim Idle 01", "Standing Idle 01"],
+	"Standing Aim Idle 01": ["Standing Aim Idle 01", "Standing Aim Idle 02 Looking",  "Standing Idle 01"],
+	"Standing Aim Idle 02 Looking": ["Standing Aim Idle 01", "Standing Idle 01"],
 }
 var animation_speeds = {
 	"Unarmed Idle 01": 1,
 	"Standing Idle 01": 1,
 	"Standing Idle 02 Looking": 1,
 	"Standing Idle 03 Examine": 1,
-	"Standing Run Forward": 1,
+	"Standing Run Forward": 1.25,
 	"Standing Run Forward Stop": 1,
 	
 	# Crouch
@@ -35,13 +34,12 @@ var animation_speeds = {
 	"Crouch Idle 02 Looking Around": 1,
 	"Crouch Idle 03 Looking Over": 1,
 	"Crouch To Standing": 2,
-	"Crouch Walk Forward": 1,
+	"Crouch Walk Forward": 1.25,
 	
 	# Arrow
-	"Standing Draw Arrow": 1,
+	"Standing Draw Arrow": 1.5,
 	"Standing Aim Idle 01": 1,
-	"Standing Aim Idle 02 Looking": 1,
-	"Standing Draw Arrow Backwards": 1,
+	"Standing Aim Idle 02 Looking": 1
 }
 
 var current_state = null
@@ -55,7 +53,7 @@ func _ready():
 func set_animation(animation_name, backwards = false):
 	if animation_name == current_state:
 		return true
-	print(animation_name)
+
 	if has_animation(animation_name):
 		if current_state != null:
 			var possible_animations = states[current_state]
@@ -63,18 +61,18 @@ func set_animation(animation_name, backwards = false):
 			if animation_name in possible_animations:
 				current_state = animation_name
 				if backwards == false:
-					play(animation_name, 0.1, animation_speeds[animation_name])
+					play(animation_name, 0.25, animation_speeds[animation_name])
 				else:
-					play_backwards(animation_name, 0.1)
+					play_backwards(animation_name, 0.25)
 				return true
 			else:
 				return true
 		else:
 			current_state = animation_name
 			if backwards == false:
-				play(animation_name, 0.1, animation_speeds[animation_name])
+				play(animation_name, 0.25, animation_speeds[animation_name])
 			else:
-				play_backwards(animation_name, 0.1)
+				play_backwards(animation_name, 0.25)
 			return true
 	
 	return false
@@ -114,8 +112,6 @@ func animation_ended(anim_name):
 		var possible_actions = [states[current_state][0], states[current_state][1]]
 		var next = randomize_next_animation(possible_actions)
 		set_animation(next)
-	elif anim_name == "Standing Draw Arrow Backwards":
-		set_animation("Standing Idle 01")
 	
 func randomize_next_animation(animations):
 	var rand = randi_generator.randi_range(0, animations.size() - 1)
