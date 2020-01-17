@@ -57,13 +57,25 @@ func process_input(delta):
 	input_movement_vector = Vector2()
 	
 	if Input.is_action_pressed("joypad_axis_left_up"):
-		input_movement_vector.y -= Input.get_action_strength("joypad_axis_left_up")
+		if Input.is_joy_button_pressed(0, JOY_AXIS_1): 
+			input_movement_vector.y -= Input.get_action_strength("joypad_axis_left_up")
+		elif Input.is_key_pressed(KEY_W):
+			input_movement_vector.y -= 1
 	if Input.is_action_pressed("joypad_axis_left_down"):
-		input_movement_vector.y += Input.get_action_strength("joypad_axis_left_down") 
+		if Input.is_joy_button_pressed(0, JOY_AXIS_1): 
+			input_movement_vector.y += Input.get_action_strength("joypad_axis_left_down") 
+		elif Input.is_key_pressed(KEY_S):
+			input_movement_vector.y += 1
 	if Input.is_action_pressed("joypad_axis_left_left"):
-		input_movement_vector.x += Input.get_action_strength("joypad_axis_left_left")
+		if Input.is_joy_button_pressed(0, JOY_AXIS_0): 
+			input_movement_vector.x += Input.get_action_strength("joypad_axis_left_left")
+		elif Input.is_key_pressed(KEY_A):
+			input_movement_vector.x += 1
 	if Input.is_action_pressed("joypad_axis_left_right"):
-		input_movement_vector.x -= Input.get_action_strength("joypad_axis_left_right")
+		if Input.is_joy_button_pressed(0, JOY_AXIS_0): 
+			input_movement_vector.x -= Input.get_action_strength("joypad_axis_left_right")
+		elif Input.is_key_pressed(KEY_D):
+			input_movement_vector.x -= 1
 		
 	input_movement_vector = input_movement_vector.normalized()
 
@@ -218,7 +230,6 @@ func hold_changes(value):
 
 func set_aiming(value):
 	is_aiming = value
-	print(is_aiming)
 
 func is_to_move():
 	return Vector2(0, 0) != input_movement_vector
