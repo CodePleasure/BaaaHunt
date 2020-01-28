@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Player_Af.escn-ebabc8b7865107c87acf1e3e2c38d5ba.scn"
+path="res://.import/Af.escn-64103318b657cf4d883a944fffec7298.scn"
 
 [deps]
 
-source_file="res://assets/Player_Af/Player_Af.escn"
-dest_files=[ "res://.import/Player_Af.escn-ebabc8b7865107c87acf1e3e2c38d5ba.scn" ]
+source_file="res://assets/Player_Af/Af.escn"
+dest_files=[ "res://.import/Af.escn-64103318b657cf4d883a944fffec7298.scn" ]
 
 [params]
 

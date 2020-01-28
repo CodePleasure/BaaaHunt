@@ -1,12 +1,15 @@
 extends AnimationPlayer
 
+export var MASTER_PLAYBACK_SPEED = 1.0
+
 var valid_change_states = {
 	"Idle": ["Walking", "Running"],
-	"Walking": ["Idle", "Running", "Attack_01", "Attack_02"],
-	"Running": ["Idle", "Walking", "Attack_01", "Attack_02"],
-	"Jumping": ["Idle", "Walking", "Running", "Attack_01", "Attack_02"],
-	"Attack_01": ["Idle"],
-	"Attack_02": ["Idle"],
+	"Walking": ["Idle", "Running", "Attack_01", "Attack_02", "Attack_Aim_01", "Attack_Aim_Idle_01", "Release_Arrow_01"], 
+	"Running": ["Idle", "Walking", "Attack_01", "Attack_02", "Attack_Aim_01", "Attack_Aim_Idle_01", "Release_Arrow_01"],
+	"Jumping": ["Idle", "Walking", "Running", "Attack_01", "Attack_02", "Attack_Aim_01", "Attack_Aim_Idle_01", "Release_Arrow_01"],
+	"Attack_Aim_01": ["Idle"],
+	"Attack_Aim_Idle_01": ["Attack_Aim_01"],
+	"Release_Arrow_01": ["Attack_Aim_01", "Attack_Aim_Idle_01"],
 }
 
 var animation_speeds = {
@@ -14,8 +17,9 @@ var animation_speeds = {
 	"Walking": 1,
 	"Running": 1.75,
 	"Jumping": 1.5,
-	"Attack_01": 1.75,
-	"Attack_02": 1,
+	"Attack_Aim_01": 1.75,
+	"Attack_Aim_Idle_01": 1.75,
+	"Release_Arrow_01": 1.75,
 }
 
 var current_state = null
@@ -42,7 +46,7 @@ func set_animation(animation_name):
 	return true
 
 func play_animation(animation_name, blend = 0.15):
-	play(animation_name, blend, animation_speeds[animation_name])
+	play(animation_name, blend, animation_speeds[animation_name] * MASTER_PLAYBACK_SPEED)
 	current_state = animation_name
 
 func animation_callback():
@@ -54,7 +58,7 @@ func animation_callback():
 func animation_ended(anim_name):
 	if anim_name == "Jumping":
 		play_animation("Idle")
-	elif anim_name == "Attack_01":
-		play_animation("Idle")
-	elif anim_name == "Attack_02":
+	elif anim_name == "Attack_Aim_01":
+		play_animation("Attack_Aim_Idle_01")
+	elif anim_name == "Release_Arrow_01":
 		play_animation("Idle")
