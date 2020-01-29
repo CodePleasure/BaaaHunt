@@ -5,13 +5,9 @@ export var GRAVITY = -32
 
 export var AIM_ROTATION_SPEED = 1
 export var AIM_WIDTH_X = PI/5
-export var AIM_WIDTH_Y = PI/5
+export var AIM_WIDTH_Y = 1.55
 
-export var CAMERA_ROTATION_SLOW = 0.0025
-export var CAMERA_ROTATION_FAST = 0.025
-export var CAMERA_SLERP_TRANSITION_DIFF = 0.025
-
-const PLAYER_ROTATION_ADJUSTMENT = 0
+const PLAYER_ROTATION_ADJUSTMENT = -0.075
 const AIM_ROTATION_RATIO = 0.075
 const AIM_ROTATION_Y_ADJUST = 0.12
 
@@ -25,12 +21,6 @@ var is_aiming = false
 var freeze_position = false
 var freeze_attack = false
 
-var is_camera_rotate_ready = false
-
-var camera_rot_initial
-var camera_rot
-var player_basis
-var player_rot
 var model_scale
 
 var input_movement_vector = Vector2()
@@ -42,18 +32,14 @@ var vel = Vector3()
 var animation_manager_upper
 var animation_manager_lower
 
-# Temporary, this must be a arrow scene instead of just a string.
-var arrows = ["Arrow_Regular", "Arrow_SpyCam"]
-var arrow_idx = 0
+var arrow_scene = preload("res://assets/Arrows/Arrow_Lightning/Arrow_Light.tscn")
 
 var skeleton
 var bone_rotation_spine
 var bone_rotation_pelvis
+var tm = 0
 
 func _ready():
-	camera_rot = CAMERA_ROTATION_SLOW
-	player_basis = $Armature.transform.orthonormalized().basis
-	player_rot = $Armature.rotation.y
 	model_scale = $Armature.scale
 	
 	animation_manager_upper = $Armature/Skeleton/AnimationPlayer_Upper
@@ -63,8 +49,6 @@ func _ready():
 	bone_rotation_spine = skeleton.find_bone("Bip001 Spine0")
 	bone_rotation_pelvis = skeleton.find_bone("Bip001 Pelvis")
 
-	camera_rot_initial = $Camera_Rotate/Camera_Rear.rotation
-
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN) 
 	
 func _physics_process(delta):
@@ -73,9 +57,7 @@ func _physics_process(delta):
 	process_model_rotation(delta)
 	process_model_aim_rotation(delta)
 	process_model_direction(delta)
-	process_quick_slerp_camera(delta)
 	process_model_movement(delta)
-	process_camera_movement(delta)
 
 func process_input(delta):
 	input_movement_vector = get_joy_dir_vector("joypad_axis_left_up", "joypad_axis_left_down", "joypad_axis_left_left", "joypad_axis_left_right")
@@ -93,9 +75,6 @@ func process_input(delta):
 	input_movement_vector_normalized = input_movement_vector.normalized()
 	
 	input_aim_rotation_vector = get_joy_dir_vector("joypad_axis_right_up", "joypad_axis_right_down", "joypad_axis_right_left", "joypad_axis_right_right")
-	
-	if Input.is_action_just_pressed("switch_arrow"):
-		arrow_idx = (arrow_idx + 1) % 2
 
 func get_joy_dir_vector(up, down, left, right):
 	var vec = Vector2()
@@ -108,6 +87,18 @@ func get_joy_dir_vector(up, down, left, right):
 	if Input.is_action_pressed(right):
 		vec.x -= Input.get_action_strength(right)
 	return vec
+
+func shoot_arrow():
+	var clone = arrow_scene.instance()
+	var scene_root = get_tree().root.get_children()[0]
+	scene_root.add_child(clone)
+	
+	clone.global_transform = $"Armature/Skeleton/Bip001 R HandBoneAttachment/Bow".global_transform
+	clone.scale = Vector3(0.5,0.5,0.5)
+	var spine_rotation = Quat(skeleton.get_bone_pose(bone_rotation_spine).basis)
+	var x = -spine_rotation.y + $Armature.rotation.x
+	var y = -spine_rotation.x + $Armature.rotation.y
+	clone.rotation = Vector3(x, y, 0)
 
 func process_model_animation(delta):
 	if Input.is_action_just_pressed("movement_jump"):
@@ -137,7 +128,7 @@ func process_model_rotation(delta):
 	if freeze_position == true:
 		return
 
-	var rotation_rad = xy2rad(input_movement_vector_normalized) + $Camera_Rotate.rotation.y
+	var rotation_rad = xy2rad(input_movement_vector_normalized) + $Camera.rotation.y
 	var rotation_vec = Vector3(0, rotation_rad + PLAYER_ROTATION_ADJUSTMENT, 0)
 	$Armature.rotation = rotation_vec
 	$Armature.orthonormalize()
@@ -167,57 +158,12 @@ func process_model_direction(delta):
 	dir += -get_transform().basis.z * input_movement_vector_normalized.y
 	dir += get_transform().basis.x * input_movement_vector_normalized.x
 
-func process_camera_movement(delta):
-	var player_dir = dir
-	
-	var rotate_dir = Quat(skeleton.get_bone_pose(bone_rotation_spine).basis)
-	$Camera_Rotate/Camera_Rear.rotation = camera_rot_initial
-	$Camera_Rotate/Camera_Rear.rotation.y -= rotate_dir.x / 3
-
-	if camera_rot == CAMERA_ROTATION_SLOW:
-		if is_to_move() == true:
-			is_camera_rotate_ready = false
-			if $Camera_Rotate/Camera_Rotation_Trigger.is_stopped() == false:
-				$Camera_Rotate/Camera_Rotation_Trigger.stop()
-			return
-		elif is_camera_rotate_ready == false:
-			if $Camera_Rotate/Camera_Rotation_Trigger.is_stopped() == true:
-				$Camera_Rotate/Camera_Rotation_Trigger.start()
-			return
-			
-		var abs_z = abs(player_dir.z)
-		if abs_z < 0.025:
-			player_basis = $Armature.transform.orthonormalized().basis
-			player_rot = $Armature.rotation.y
-
-	var cam_basis = $Camera_Rotate.transform.orthonormalized().basis
-	var new_rotation = Quat(cam_basis).slerp(player_basis, camera_rot)
-
-	$Camera_Rotate.transform = Transform(new_rotation, Vector3(0, 1, 0))
-	$Camera_Rotate.rotation.x = 0
-	$Camera_Rotate.rotation.z = 0
-
-	if abs($Camera_Rotate.rotation.y - player_rot) < CAMERA_SLERP_TRANSITION_DIFF:
-		camera_rot = CAMERA_ROTATION_SLOW
-
-func process_quick_slerp_camera(delta):
-	if Input.is_action_just_pressed("camera_slerp_fast") == false:
-		return
-	
-	if freeze_position == true:
-		return
-
-	camera_rot = CAMERA_ROTATION_FAST
-	player_basis = $Armature.transform.orthonormalized().basis
-	player_rot = $Armature.rotation.y
-	
 func process_model_movement(delta):
 	if freeze_position == true:
 		return
 
 	var player_dir = dir
-
-	player_dir = player_dir.rotated(Vector3(0, 1, 0), $Camera_Rotate.rotation.y)
+	player_dir = player_dir.rotated(Vector3(0, 1, 0), $Camera.rotation.y)
 	player_dir.y = 0
 	player_dir = player_dir.normalized()
 	
@@ -266,7 +212,7 @@ func set_animation_changeable(value):
 
 func freeze_position(value):
 	freeze_position = value
-	
+
 func launch_jumping(value):
 	if value == true:
 		vel.y = JUMP_SPEED
@@ -293,6 +239,3 @@ func _on_AnimationPlayer_Upper_animation_finished(anim_name):
 		animation_manager_upper.play_animation(lower_anim)
 		var lower_anim_position = animation_manager_lower.get_current_animation_position() 
 		animation_manager_upper.seek(lower_anim_position, true)
-
-func _on_Camera_Rotation_Trigger_timeout():
-	is_camera_rotate_ready = true
