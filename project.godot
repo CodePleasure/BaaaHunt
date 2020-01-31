@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="BaaaHunt!"
-run/main_scene="res://assets/Walrus_Cave/Walrus_Cave.tscn"
+run/main_scene="res://src/Scenes/Walrus_Cave.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Helper="*res://src/helpers/Helper.gd"
 
 [display]
 

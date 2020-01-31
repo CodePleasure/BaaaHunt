@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Arrows/Arrow_Lightning/Arrow.dae" type="PackedScene" id=1]
+[ext_resource path="res://src/Scripts/Arrow_Lightning.gd" type="Script" id=2]
+[ext_resource path="res://assets/Arrows/Arrow_Lightning/Arrow_Texture.material" type="Material" id=3]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.05
+height = 2.9
+
+[sub_resource type="RayShape" id=2]
+length = 0.5
+slips_on_slope = true
+
+[node name="Scene_Root" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="Arrow" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0 )
+material_override = ExtResource( 3 )
+
+[node name="Area" type="Area" parent="." index="2"]
+
+[node name="CollisionShape_Body" type="CollisionShape" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0.300225 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape_Head" type="CollisionShape" parent="Area" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.88345 )
+shape = SubResource( 2 )

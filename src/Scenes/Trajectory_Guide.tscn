@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/crosshair.png" type="Texture" id=1]
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+params_billboard_mode = 1
+albedo_color = Color( 1, 1, 1, 0.392157 )
+
+[node name="Sprite3D" type="Sprite3D"]
+material_override = SubResource( 8 )
+opacity = 0.1
+pixel_size = 0.001
+texture = ExtResource( 1 )

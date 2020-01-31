@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="Platform_Mesh_Library" type="Spatial"]

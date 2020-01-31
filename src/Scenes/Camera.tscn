@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Scripts/Camera.gd" type="Script" id=1]
+
+
+
+[node name="Camera_Mid_Top_Slerp" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Camera" type="InterpolatedCamera" parent="."]
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 0, 338.771, -696.511 )
+current = true
+far = 1000.0
+target = NodePath("../Camera_Rear")
+speed = 6.0
+enabled = true
+
+[node name="Camera_Rear" type="Position3D" parent="."]
+transform = Transform( -1, 2.26265e-008, -8.44437e-008, 0, 0.965918, 0.258819, 8.74228e-008, 0.258817, -0.965924, 0, 299.868, -434.62 )
+
+[node name="Camera_Rotation_Trigger" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+[connection signal="timeout" from="Camera_Rotation_Trigger" to="." method="_on_Camera_Rotation_Trigger_timeout"]
